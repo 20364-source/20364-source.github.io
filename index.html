@@ -1,283 +1,287 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Saya</title>
-    <style>
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-        }/* NAVBAR */
-    .navbar {
-        position: sticky;
-        top: 0;
-        width: 100%;
-        background: rgba(44, 62, 80, 0.95);
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 14px 40px;
-        backdrop-filter: blur(10px);
-        z-index: 10;
-    }
+<meta charset="UTF-8">
+<title>KALKULATOR INTAN</title>
 
-    .nav-title { font-weight: bold; font-size: 20px; }
-    .nav-menu a {
-        color: white;
-        text-decoration: none;
-        margin-left: 20px;
-        position: relative;
-    }
-
-    .nav-menu a::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        background: #00f5a0;
-        left: 0;
-        bottom: -4px;
-        transition: 0.3s;
-    }
-
-    .nav-menu a:hover::after { width: 100%; }
-
-    .container {
-        width: 900px;
-        margin: 30px auto;
-        display: flex;
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-
-    .left {
-        width: 35%;
-        background: linear-gradient(180deg, #4facfe, #00f2fe);
-        color: white;
-        padding: 25px;
-        text-align: center;
-    }
-
-    .left img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 15px;
-        border: 4px solid white;
-        cursor: pointer;
-    }
-
-    .section { margin-top: 25px; text-align: left; }
-
-    .section h3 {
-        border-bottom: 2px solid white;
-        padding-bottom: 5px;
-        margin-bottom: 10px;
-        cursor: pointer;
-    }
-
-    .right {
-        width: 65%;
-        padding: 30px;
-        background: #fdfdfd;
-    }
-
-    .right h1 {
-        margin: 0;
-        font-size: 30px;
-        color: #333;
-    }
-
-    .title {
-        color: #764ba2;
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
-
-    .box {
-        margin-top: 25px;
-    }
-
-    .box h3 {
-        background: linear-gradient(90deg, #667eea, #764ba2);
-        color: white;
-        padding: 10px;
-        border-radius: 10px;
-        cursor: pointer;
-    }
-
-    .box:hover {
-        transform: translateY(-3px);
-        transition: 0.3s;
-    }
-
-    ul { padding-left: 20px; }
-    ul li { margin-bottom: 6px; }
-
-    .skill { margin: 8px 0; }
-    .bar {
-        background: #eee;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-
-    .bar div {
-        height: 8px;
-        background: linear-gradient(90deg, #00f5a0, #00d9f5);
-    }
-
-    .btn {
-        display:inline-block;
-        margin-top:10px;
-        background: linear-gradient(90deg, #00f5a0, #00d9f5);
-        color:white;
-        padding:8px 12px;
-        border-radius:8px;
-        text-decoration:none;
-    }
-
-    .modal {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,.7);
-        display: none;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .modal-content {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-    }
-
-</style>
-
-</head>
-<body><div class="navbar">
-    <div class="nav-title">CV INTUNNN</div>
-    <div class="nav-menu">
-        <a href="#profil">Profil</a>
-        <a href="#pendidikan">Pendidikan</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#kontak">Kontak</a>
-    </div>
-</div><div class="container"><div class="left">
-    <img onclick="openModal()" src="intann.jpeg" alt="Foto Profil">
-
-    <div class="section" id="kontak">
-        <h3 onclick="toggle(this)">Kontak</h3>
-        <div>
-            <p>📞 0882019443458</p>
-            <p>📧 intanngaini171@gmail.com</p>
-            <p>📍 banjarnegara</p>
-            <a class="btn" href="#">Hubungi Saya</a>
-        </div>
-    </div>
-
-    <div class="section">
-        <h3 onclick="toggle(this)">Kemampuan</h3>
-        <div class="skill">Komunikasi<div class="bar"><div style="width:90%"></div></div></div>
-        <div class="skill">Bulutangkis<div class="bar"><div style="width:80%"></div></div></div>
-        <div class="skill">Silat<div class="bar"><div style="width:75%"></div></div></div>
-    </div>
-
-    <div class="section">
-        <h3 onclick="toggle(this)">Soft Skill</h3>
-        <ul>
-            <li>Kerja Sama</li>
-            <li>Disiplin</li>
-            <li>Inisiatif</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h3 onclick="toggle(this)">Prestasi</h3>
-        <ul>
-            <li>Juara 2 Pencak Silat (2022)</li>
-            <li>Juara 3 lomba OSN (2022)</li>
-        </ul>
-    </div>
-</div>
-
-<div class="right">
-    <h1 id="profil">intan</h1>
-    <p class="title">Pelajar</p>
-
-    <p>
-        Saya adalah siswa yang disiplin, bertanggung jawab, dan memiliki semangat belajar tinggi.
-        Saya mampu bekerja dalam tim maupun individu serta selalu ingin berkembang,serta mampu beradaptasi
-        dengan lingkungan baru.
-    </p>
-
-    <div class="box" id="pendidikan">
-        <h3 onclick="toggle(this)">Pendidikan</h3>
-        <ul>
-            <li>SMKN 1 BAWANG (2025-Sekarang)</li>
-            <li>MTs COKROAMINOTO MADUKARA (2022-2025)</li>
-            <li>MIN 3 BANJARNEGARA (2016-2022)</li>
-        </ul>
-    </div>
-
-    <div class="box">
-        <h3 onclick="toggle(this)">Pengalaman Organisasi</h3>
-        <ul>
-            <li>OSIS - Anggota</li>
-            <li>Pramuka - Aktif</li>
-        </ul>
-    </div>
-
-    <div class="box" id="portfolio">
-        <h3 onclick="toggle(this)">Proyek</h3>
-        <ul>
-            <li><a href="https://www.figma.com/design/yHbzduiPYe4LK0fLPka0Iz/Untitled?node-id=0-1&t=UXuGVGrHYPy4uol6-1">figma 1</a></li>
-            <li><a href="https://www.figma.com/design/QhmwqRObX4kE8shbW4uRt8/Untitled?node-id=0-1&t=13emMveuAzwPt3Vf-1">figma 2</a></li>
-            <li><a href="https://www.figma.com/design/8zgvZXF3d6uraXkWw8WHFm/Untitled?node-id=0-1&t=JmC6TngL0LCcV23Q-1">figma 3</a></li>
-            <li><a href="https://canva.link/dgfdhu7k7phn07u">canva packaging</a></li>
-        </ul>
-    </div>
-
-    <div class="box">
-        <h3 onclick="toggle(this)">Hobi</h3>
-        <ul>
-            <li>Membaca</li>
-            <li>Menulis</li>
-        </ul>
-    </div>
-
-    <div class="box">
-        <h3 onclick="toggle(this)">Media Sosial</h3>
-        <ul>
-            <li><a href="https://www.instagram.com/intannnkhrl?igsh=MTRyOGtmNWFpOHF3cA==">Instagram</a></li>
-            <li><a href="https://wa.me/qr/AYDJRKT72WVWC1">WhatsApp</a></li>
-            <li><a href="https://github.com/">github</a></li>
-        </ul>
-    </div>
-
-</div>
-
-</div><div id="modal" class="modal" onclick="closeModal()">
-    <div class="modal-content">
-        <img src="intann.jpeg"
-            style="width:200px; border-radius:10px; margin-top:10px;">
-        <h2>Biodata Singkat</h2>
-        <p>Nama: intan khurul ngaini</p>
-        <p>Status: Pelajar</p>
-        <p>Semangat belajar tinggi 🚀</p>
-    </div>
-</div><script>
-function toggle(el){
-    let next = el.nextElementSibling;
-    next.style.display = (next.style.display==='none') ? 'block' : 'none';
+<style>
+* {
+  box-sizing: border-box;
 }
-function openModal(){ document.getElementById('modal').style.display='flex'; }
-function closeModal(){ document.getElementById('modal').style.display='none'; }
-</script></body>
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #d6f6ff, #e8ddff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 15px;
+}
+
+/* WRAPPER BIAR SEJAJAR */
+.container {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+/* KALKULATOR */
+.calculator {
+  width: 340px;
+  background: #fffafc;
+  padding: 15px;
+  border-radius: 22px;
+  box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4);
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-weight: 900;
+  font-size: 18px;
+  color: #ff69b4;
+}
+
+/* ICON */
+.history-btn {
+  width: 26px;
+  height: 26px;
+  font-size: 12px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #cdb4ff;
+  color: white;
+}
+
+/* DISPLAY */
+.display {
+  width: 100%;
+  height: 70px;
+  font-size: 28px;
+  text-align: right;
+  padding: 12px;
+  border-radius: 14px;
+  border: 2px solid #ffd6e8;
+  background: #fff0f6;
+  color: #6a0572;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+/* BUTTON GRID */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  height: 65px;
+  font-size: 20px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+button:not(.clear):not(.delete):not(.operator):not(.equal) {
+  background: #ffe5ec;
+  color: #6a0572;
+}
+
+.operator { background: #cdb4ff; color: white; }
+
+.clear {
+  grid-column: span 2;
+  background: #ff9aa2;
+  color: white;
+  font-weight: 900;
+}
+
+.delete {
+  grid-column: span 2;
+  background: #a0c4ff;
+  color: white;
+  font-weight: 900;
+}
+
+.equal {
+  background: #8ac926;
+  color: white;
+  font-weight: bold;
+}
+
+/* =========================
+   DASHBOARD RIWAYAT SAMPING
+========================= */
+.history-panel {
+  width: 220px;
+  height: 420px;
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: none;
+  overflow-y: auto;
+}
+
+/* judul riwayat */
+.history-title {
+  font-weight: 900;
+  color: #6a0572;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* tombol hapus */
+.clear-history {
+  background: #ff9aa2;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+/* item history */
+.history-item {
+  padding: 6px;
+  border-bottom: 1px dashed #e0aaff;
+  font-size: 14px;
+  color: #6a0572;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- KALKULATOR -->
+  <div class="calculator">
+
+    <div class="header">
+      <div class="title">KALKULATOR INTAN</div>
+      <button class="history-btn" onclick="toggleHistory()">🕒</button>
+    </div>
+
+    <input type="text" id="display" class="display" value="0">
+
+    <div class="buttons">
+
+      <button class="clear" onclick="clearDisplay()">CLEAR</button>
+      <button class="delete" onclick="deleteLast()">DELETE</button>
+
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button class="operator" onclick="appendValue('/')">÷</button>
+
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button class="operator" onclick="appendValue('*')">×</button>
+
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button class="operator" onclick="appendValue('-')">−</button>
+
+      <button onclick="appendValue('.')">.</button>
+      <button onclick="appendValue('0')">0</button>
+      <button class="operator" onclick="appendValue('+')">+</button>
+      <button class="equal" onclick="calculate()">=</button>
+
+    </div>
+  </div>
+
+  <!-- RIWAYAT SAMPING -->
+  <div id="historyPanel" class="history-panel">
+
+    <div class="history-title">
+      RIWAYAT
+      <button class="clear-history" onclick="clearHistory()">Hapus</button>
+    </div>
+
+    <div id="historyList"></div>
+
+  </div>
+
+</div>
+
+<script>
+let display = document.getElementById("display");
+let historyData = [];
+
+/* input */
+function appendValue(v) {
+  if (display.value === "0") display.value = v;
+  else display.value += v;
+}
+
+/* clear */
+function clearDisplay() {
+  display.value = "0";
+}
+
+/* delete */
+function deleteLast() {
+  if (display.value.length <= 1) display.value = "0";
+  else display.value = display.value.slice(0, -1);
+}
+
+/* hitung */
+function calculate() {
+  try {
+    let result = eval(display.value);
+    historyData.push(display.value + " = " + result);
+    display.value = result;
+    renderHistory();
+  } catch {
+    display.value = "Error";
+  }
+}
+
+/* toggle panel */
+function toggleHistory() {
+  let panel = document.getElementById("historyPanel");
+  panel.style.display = (panel.style.display === "block") ? "none" : "block";
+  renderHistory();
+}
+
+/* tampilkan history */
+function renderHistory() {
+  let list = document.getElementById("historyList");
+  list.innerHTML = "";
+
+  historyData.slice().reverse().forEach(item => {
+    let div = document.createElement("div");
+    div.className = "history-item";
+    div.textContent = item;
+    div.onclick = () => display.value = item.split("=")[0].trim();
+    list.appendChild(div);
+  });
+}
+
+/* hapus history */
+function clearHistory() {
+  historyData = [];
+  renderHistory();
+}
+</script>
+
+</body>
 </html>
