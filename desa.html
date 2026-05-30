@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Desa Bantarwaru</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f5f7fb;
+    color:#222;
+    overflow-x:hidden;
+}
+
+.custom-navbar{
+    background:rgba(0,0,0,0.35);
+    backdrop-filter:blur(12px);
+    padding:15px 0;
+}
+
+.navbar-brand{
+    font-size:24px;
+}
+
+.hero-section{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url('bg-CUzdrKVN.webp') center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero-content{
+    color:white;
+    z-index:2;
+}
+
+.hero-content h1{
+    font-size:65px;
+    font-weight:700;
+}
+
+.hero-content p{
+    max-width:800px;
+    margin:auto;
+    margin-top:20px;
+    font-size:18px;
+}
+
+/* ANIMASI BACKGROUND HERO */
+.hero-section::before{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        120deg,
+        rgba(25,135,84,0.2),
+        rgba(13,110,253,0.2),
+        rgba(255,193,7,0.2)
+    );
+    animation:bgMove 8s infinite alternate;
+}
+
+@keyframes bgMove{
+    0%{
+        transform:translateX(-20px);
+    }
+    100%{
+        transform:translateX(20px);
+    }
+}
+
+/* HERO TEXT */
+.hero-content{
+    animation:fadeUp 1.5s ease;
+    position:relative;
+    z-index:2;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(60px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* BUTTON */
+.btn{
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* CARD */
+.card-org,
+.umkm-card,
+.chart-box,
+.contact-box,
+.info-box{
+    background:white;
+    border-radius:24px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:all 0.4s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+/* EFEK CAHAYA */
+.card-org::before,
+.umkm-card::before,
+.chart-box::before,
+.contact-box::before,
+.info-box::before{
+    content:'';
+    position:absolute;
+    top:-100%;
+    left:-100%;
+    width:250%;
+    height:250%;
+    background:rgba(255,255,255,0.08);
+    transform:rotate(25deg);
+    transition:0.7s;
+}
+
+.card-org:hover::before,
+.umkm-card:hover::before,
+.chart-box:hover::before,
+.contact-box:hover::before,
+.info-box:hover::before{
+    top:0;
+    left:0;
+}
+
+/* HOVER CARD */
+.card-org:hover,
+.umkm-card:hover,
+.chart-box:hover,
+.contact-box:hover,
+.info-box:hover{
+    transform:translateY(-12px) scale(1.02);
+    box-shadow:0 20px 40px rgba(0,0,0,0.18);
+}
+
+/* ICON */
+.card-org i,
+.info-box i{
+    transition:0.4s;
+}
+
+.card-org:hover i,
+.info-box:hover i{
+    transform:scale(1.2) rotate(5deg);
+    color:#20c997;
+}
+
+/* GALERI */
+.galeri-grid .item{
+    position:relative;
+    overflow:hidden;
+    transition:0.4s;
+}
+
+.galeri-grid .item img{
+    transition:0.5s;
+}
+
+.galeri-grid .item:hover img{
+    transform:scale(1.12);
+}
+
+.galeri-grid .item:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* FORM */
+.form-control{
+    transition:0.3s;
+    border:2px solid transparent;
+}
+
+.form-control:focus{
+    border-color:#198754;
+    box-shadow:0 0 15px rgba(25,135,84,0.3);
+    transform:scale(1.02);
+}
+
+/* SOCIAL */
+.social-icons a{
+    transition:0.3s;
+    display:inline-block;
+}
+
+.social-icons a:hover{
+    transform:translateY(-5px) scale(1.2);
+    color:#20c997 !important;
+}
+
+/* SCROLL BUTTON */
+#topBtn{
+    transition:0.4s;
+}
+
+#topBtn:hover{
+    transform:scale(1.1);
+    background:#20c997 !important;
+}
+
+/* SECTION */
+section{
+    transition:1s ease;
+}
+
+
+.section-padding{
+    padding:100px 0;
+}
+
+.section-title h2{
+    font-size:42px;
+    font-weight:700;
+}
+
+.section-title p{
+    color:#666;
+}
+
+.info-box{
+    background:white;
+    padding:35px 20px;
+    border-radius:24px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.info-box:hover{
+    transform:translateY(-10px);
+}
+
+.info-box i{
+    font-size:45px;
+    margin-bottom:15px;
+    color:#198754;
+}
+
+.card-org,
+.chart-box,
+.contact-box,
+.info-box{
+    padding:30px;
+}
+
+/* ===== UMKM ===== */
+.umkm-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kotak sejajar */
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.umkm-card{
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.umkm-card:hover{
+    transform: translateY(-5px);
+}
+
+.umkm-card img{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.umkm-content{
+    padding: 15px;
+}
+
+.umkm-content h3{
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.umkm-content p{
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Responsive HP */
+@media(max-width: 768px){
+    .umkm-container{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width: 500px){
+    .umkm-container{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* GALERI */
+.galeri {
+    padding: 60px 0;
+    background: #f5f5f5;
+    text-align: center;
+}
+
+.galeri h2 {
+    margin-bottom: 30px;
+    font-size: 32px;
+    color: #333;
+}
+
+/* GRID 8 KOTAK */
+.galeri-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* KOTAK GAMBAR */
+.galeri-grid .item {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.galeri-grid .item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .galeri-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .galeri-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== KONTAK ===== */
+.kontak{
+    padding: 80px 10%;
+    background: #f5f5f5;
+}
+
+.kontak h2{
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 50px;
+    color: #222;
+}
+
+.kontak-container{
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+/* BOX */
+.kontak-box,
+.form-box{
+    flex: 1;
+    background: #fff;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* KIRI */
+.kontak-box h3{
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+.kontak-item{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: #444;
+}
+
+.kontak-item i{
+    color: #2f855a;
+    font-size: 20px;
+}
+
+/* KANAN FORM */
+.form-box form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-box input,
+.form-box textarea{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.form-box textarea{
+    height: 150px;
+    resize: none;
+}
+
+.form-box button{
+    width: 220px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #2f855a;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-box button:hover{
+    background: #276749;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px){
+    .kontak-container{
+        flex-direction: column;
+    }
+
+    .kontak h2{
+        font-size: 35px;
+    }
+}
+
+@media(max-width:768px){
+
+.hero-content h1{
+    font-size:40px;
+}
+
+.hero-content p{
+    font-size:16px;
+}
+
+.section-title h2{
+    font-size:30px;
+}
+
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+<div class="container">
+<a class="navbar-brand fw-bold" href="#"> Desa Bantarwaru</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
+<li class="nav-item"><a class="nav-link" href="#profil">Profil</a></li>
+<li class="nav-item"><a class="nav-link" href="#struktur">Struktur</a></li>
+<li class="nav-item"><a class="nav-link" href="#statistik">Statistik</a></li>
+<li class="nav-item"><a class="nav-link" href="#umkm">UMKM</a></li>
+<li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
+<li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section id="beranda" class="hero-section">
+<div class="container hero-content">
+<h1>Selamat Datang di Desa Bantarwaru</h1>
+<p>
+Website resmi desa yang menyediakan informasi profil desa,
+statistik penduduk, UMKM, galeri kegiatan masyarakat,
+dan layanan pengaduan online.
+</p>
+
+<div class="mt-4">
+<a href="#profil" class="btn btn-light btn-lg px-4 me-3">Jelajahi Desa</a>
+<a href="#kontak" class="btn btn-outline-light btn-lg px-4">Hubungi Kami</a>
+</div>
+</div>
+</section>
+
+
+<!-- PROFIL -->
+<section id="profil" class="section-padding bg-light">
+<div class="container">
+<div class="section-title text-center mb-5">
+<h2>Profil Desa</h2>
+<p>Mengenal Desa Bantarwaru lebih dekat</p>
+</div>
+
+<div class="row align-items-center">
+<div class="col-lg-6">
+<img src="hq720.jpg" class="img-fluid rounded-4 shadow">
+</div>
+
+<div class="col-lg-6 mt-4 mt-lg-0">
+<h3>Sejarah Desa</h3>
+<p>
+Desa Bantarwaru dahulu terbagi menjadi dua wilayah yang kemudian disatukan menjadi satu desa. 
+Nama “Bantarwaru” berasal dari banyaknya pohon waru serta tokoh Kyai Bantar yang membantu mempersatukan wilayah tersebut. 
+Desa ini berkembang menjadi 5 dusun dengan beberapa RT dan gerombol. 
+Kepemimpinan desa dari masa ke masa berubah dari sistem adat hingga pemilihan demokratis seperti sekarang.
+</p>
+
+<h4>Visi</h4>
+<p>Membangun Desa Bantarwaru yang Guyup Rukun, Sejahtera dan Mandiri.</p>
+
+<h4>Misi</h4>
+<ul>
+<li>Mewujudkan pemerintah desa yang baik,disiplin,profesional,dan bertanggung jawab</li>
+<li>Melaksanakan pembangunan desa yang merata dan berkelanjutan</li>
+<li>Meningkatkan perekonomian melalui pelatihan,pembinaan,dan pengelolaan dana desa</li>
+<li>Meningkatkan kualitas sumber daya manusia dan memperkuat peran serta masyarakat dalam pembangunan desa</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STRUKTUR -->
+<section id="struktur" class="section-padding">
+<div class="container">
+
+<div class="section-title text-center mb-5">
+<h2>Struktur Organisasi Desa</h2>
+<p>Susunan Perangkat Desa Bantarwaru</p>
+</div>
+
+<div class="row g-4">
+
+<!-- KEPALA DESA -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-user-tie fa-3x text-success mb-3"></i>
+<h5>Kepala Desa</h5>
+<p>Rokhadi</p>
+</div>
+</div>
+
+<!-- SEKRETARIS -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-user fa-3x text-success mb-3"></i>
+<h5>Sekretaris Desa</h5>
+<p>Ngafifudin</p>
+</div>
+</div>
+
+<!-- KAUR KEUANGAN -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-wallet fa-3x text-success mb-3"></i>
+<h5>Kaur Keuangan</h5>
+<p>Deni Yudhistira</p>
+</div>
+</div>
+
+<!-- KAUR PERENCANAAN -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-chart-line fa-3x text-success mb-3"></i>
+<h5>Kaur Perencanaan</h5>
+<p>Aristianto</p>
+</div>
+</div>
+
+<!-- KAUR TU -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-folder-open fa-3x text-success mb-3"></i>
+<h5>Kaur TU dan Umum</h5>
+<p>Muslihatul Lailiyah</p>
+</div>
+</div>
+
+<!-- KASI PELAYANAN -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-handshake fa-3x text-success mb-3"></i>
+<h5>Kasi Pelayanan</h5>
+<p>Firda Isdiyanto</p>
+</div>
+</div>
+
+<!-- KASI PEMERINTAHAN -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-building-columns fa-3x text-success mb-3"></i>
+<h5>Kasi Pemerintahan</h5>
+<p>Riya Astriana</p>
+</div>
+</div>
+
+<!-- KASI KESEJAHTERAAN -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-people-group fa-3x text-success mb-3"></i>
+<h5>Kasi Kesejahteraan</h5>
+<p>Wahdjyuloh</p>
+</div>
+</div>
+
+<!-- KADUS 1 -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-house-user fa-3x text-success mb-3"></i>
+<h5>Kadus 1</h5>
+<p>Maryanto</p>
+</div>
+</div>
+
+<!-- KADUS 2 -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-house-user fa-3x text-success mb-3"></i>
+<h5>Kadus 2</h5>
+<p>Murtafingah</p>
+</div>
+</div>
+
+<!-- KADUS 3 -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-house-user fa-3x text-success mb-3"></i>
+<h5>Kadus 3</h5>
+<p>M. Mahfudz</p>
+</div>
+</div>
+
+<!-- KADUS 4 -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-house-user fa-3x text-success mb-3"></i>
+<h5>Kadus 4</h5>
+<p>Siti Juwaidah Jamil</p>
+</div>
+</div>
+
+<!-- KADUS 5 -->
+<div class="col-md-4">
+<div class="card-org text-center">
+<i class="fa-solid fa-house-user fa-3x text-success mb-3"></i>
+<h5>Kadus 5</h5>
+<p>Sofanul Hidayat</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- TAMBAHKAN DI ATAS CHART STATISTIK -->
+
+<div class="row g-4 mb-5">
+
+<div class="col-md-3">
+<div class="info-box text-center">
+<i class="fa-solid fa-users"></i>
+<h3 class="counter" data-target="3.929">0</h3>
+<p>Total Penduduk</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="info-box text-center">
+<i class="fa-solid fa-house"></i>
+<h3 class="counter" data-target="1.293">0</h3>
+<p>Total KK</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="info-box text-center">
+<i class="fa-solid fa-school"></i>
+<h3 class="counter" data-target="4">0</h3>
+<p>Sekolah</p>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="info-box text-center">
+<i class="fa-solid fa-shop"></i>
+<h3 class="counter" data-target="50">0</h3>
+<p>UMKM Aktif</p>
+</div>
+</div>
+
+</div>
+
+<!-- STATISTIK -->
+<section id="statistik" class="section-padding bg-light">
+<div class="container">
+
+<div class="section-title text-center mb-5">
+<h2>Statistik Penduduk</h2>
+<p>Data statistik masyarakat Desa Bantarwaru</p>
+</div>
+
+<!-- INPUT DATA -->
+<div class="row g-4 mb-5">
+
+<div class="col-md-4">
+<div class="contact-box">
+<h5 class="mb-3">Input Data Usia</h5>
+<input type="number" id="anak" class="form-control mb-2" placeholder="Jumlah Anak" value="293">
+<input type="number" id="remaja" class="form-control mb-2" placeholder="Jumlah Remaja" value="244">
+<input type="number" id="dewasa" class="form-control mb-2" placeholder="Jumlah Dewasa" value="969">
+<input type="number" id="lansia" class="form-control" placeholder="Jumlah Lansia" value="252">
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="contact-box">
+<h5 class="mb-3">Input Data Pendidikan</h5>
+<input type="number" id="sd" class="form-control mb-2" placeholder="SD" value="1500">
+<input type="number" id="smp" class="form-control mb-2" placeholder="SMP" value="1200">
+<input type="number" id="sma" class="form-control mb-2" placeholder="SMA" value="900">
+<input type="number" id="kuliah" class="form-control" placeholder="Kuliah" value="329">
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="contact-box">
+<h5 class="mb-3">Input Data Pekerjaan</h5>
+<input type="number" id="petani" class="form-control mb-2" placeholder="Petani" value="1400">
+<input type="number" id="pedagang" class="form-control mb-2" placeholder="Pedagang" value="500">
+<input type="number" id="pns" class="form-control mb-2" placeholder="PNS" value="107">
+<input type="number" id="buruh" class="form-control" placeholder="Buruh" value="700">
+</div>
+</div>
+
+</div>
+
+<!-- CHART -->
+<div class="row g-4">
+
+<div class="col-lg-4">
+<div class="chart-box">
+<h5 class="text-center mb-3">Usia</h5>
+<canvas id="usiaChart"></canvas>
+</div>
+</div>
+
+<div class="col-lg-4">
+<div class="chart-box">
+<h5 class="text-center mb-3">Pendidikan</h5>
+<canvas id="pendidikanChart"></canvas>
+</div>
+</div>
+
+<div class="col-lg-4">
+<div class="chart-box">
+<h5 class="text-center mb-3">Pekerjaan</h5>
+<canvas id="pekerjaanChart"></canvas>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- UMKM -->
+<section class="umkm" id="umkm">
+    <div class="container">
+        <h2>UMKM Desa</h2>
+        <p>Produk unggulan masyarakat desa</p>
+
+        <div class="umkm-container">
+
+            <!-- 1 -->
+            <div class="umkm-card">
+                <img src="image.png" alt="">
+                <div class="umkm-content">
+                    <h3>Produksi Tempe</h3>
+                    <p>Produksi tempe kedelai masyarakat desa.</p>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="umkm-card">
+                <img src="martabak.jpg" alt="">
+                <div class="umkm-content">
+                    <h3>Produksi Martabak</h3>
+                    <p>Martabak manis banyak diminati masyarakat.</p>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="umkm-card">
+                <img src="cilor.jpg" alt="">
+                <div class="umkm-content">
+                    <h3>Produksi Cilor</h3>
+                    <p>Cilor populer di kalangan masyarakat desa.</p>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="umkm-card">
+                <img src="buryam1.jpeg" alt="">
+                <div class="umkm-content">
+                    <h3>Produksi Bubur Ayam</h3>
+                    <p>Bubur ayam gurih khas masyarakat desa.</p>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="umkm-card">
+                <img src="sayur.jpeg" alt="">
+                <div class="umkm-content">
+                    <h3>Produksi Sayur</h3>
+                    <p>Sayur segar langsung dari kebun warga.</p>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="umkm-card">
+                <img src="bolu jadul.jpeg" alt="">
+                <div class="umkm-content">
+                    <h3>Produksi Bolu Jadul</h3>
+                    <p>Bolu jadul favorit masyarakat desa.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- GALERI -->
+<section class="galeri" id="galeri">
+  <div class="container">
+    <h2>Galeri Desa</h2>
+    <p>Dokumentasi kegiatan dan keindahan Desa Bantarwaru</p>
+
+    <div class="galeri-grid">
+      <div class="item"><img src="WhatsApp Image 2026-05-24 at 20.11.43.jpeg" alt=""></div>
+      <div class="item"><img src="WhatsApp Image 2026-05-24 at 20.14.22.jpeg" alt=""></div>
+      <div class="item"><img src="WhatsApp Image 2026-05-24 at 20.18.24.jpeg" alt=""></div>
+      <div class="item"><img src="WhatsApp Image 2026-05-24 at 20.18.25.jpeg" alt=""></div>
+      <div class="item"><img src="WhatsApp Image 2026-05-24 at 20.18.51.jpeg" alt=""></div>
+      <div class="item"><img src="WhatsApp Image 2026-05-24 at 20.20.19.jpeg" alt=""></div>
+      <div class="item"><img src="WhatsApp Image 2026-05-24 at 20.11.43 (1).jpeg" alt=""></div>
+      <div class="item"><img src="WhatsApp Image 2026-05-24 at 20.18.51 (1).jpeg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak" class="section-padding">
+<div class="container">
+<div class="section-title text-center mb-5">
+<h2>Kontak dan Pelayanan</h2>
+</div>
+
+<div class="row g-4">
+<div class="col-lg-6">
+<div class="contact-box">
+<h4>Hubungi Kami</h4>
+<p><i class="fa-solid fa-location-dot"></i> Banjarnegara, Jawa Tengah</p>
+<p><i class="fa-solid fa-phone"></i> 0882-0194-43458</p>
+<p><i class="fa-solid fa-envelope"></i> intanngaini1@gmail.com</p>
+</div>
+</div>
+
+<div class="col-lg-6">
+<div class="contact-box">
+<h4>Jam Pelayanan Desa</h4>
+
+<div class="mt-4">
+<p>
+<i class="fa-solid fa-clock text-success"></i>
+<b>Senin - Jumat</b><br>
+08.00 - 15.00 WIB
+</p>
+
+<p>
+<i class="fa-solid fa-calendar-day text-success"></i>
+<b>Sabtu</b><br>
+08.00 - 12.00 WIB
+</p>
+
+<p>
+<i class="fa-solid fa-calendar-xmark text-danger"></i>
+<b>Minggu & Hari Libur</b><br>
+Tutup
+</p>
+
+<hr>
+
+<h5>Layanan Tersedia</h5>
+<ul>
+<li>Surat Keterangan Domisili</li>
+<li>Surat Pengantar KTP</li>
+<li>Surat Pengantar KK</li>
+<li>Surat Keterangan Usaha</li>
+<li>Surat Keterangan Tidak Mampu</li>
+<li>Layanan Administrasi Desa Lainnya</li>
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+
+<div class="row text-center text-md-start align-items-center">
+
+<div class="col-md-4 mb-4 mb-md-0">
+<h4 class="fw-bold"> Desa Bantarwaru</h4>
+<p>
+Website resmi Pemerintah Desa Bantarwaru sebagai media informasi,
+layanan masyarakat, publikasi kegiatan desa, dan pengaduan online.
+</p>
+</div>
+
+<div class="col-md-4 mb-4 mb-md-0">
+<h5 class="mb-3">Menu Cepat</h5>
+<ul class="list-unstyled footer-links">
+<li><a href="#beranda">Beranda</a></li>
+<li><a href="#profil">Profil Desa</a></li>
+<li><a href="#statistik">Statistik</a></li>
+<li><a href="#umkm">UMKM</a></li>
+<li><a href="#kontak">Kontak</a></li>
+</ul>
+</div>
+
+<div class="col-md-4">
+<h5 class="mb-3">Informasi Kontak</h5>
+<p><i class="fa-solid fa-location-dot"></i> Banjarnegara, Jawa Tengah</p>
+<p><i class="fa-solid fa-phone"></i> 0882-0194-43458</p>
+<p><i class="fa-solid fa-envelope"></i> intanngaini1@gmail.com</p>
+
+<div class="social-icons mt-3">
+<a href="https://web.facebook.com/share/g/1BMVQm8AaK/" target="_blank" class="text-white me-3">
+    <i class="fab fa-facebook"></i>
+</a>
+
+<a href="https://www.instagram.com/ssb.arjuna?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-white me-3">
+    <i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://youtu.be/JPgJLMuDzeY?si=MFgasyDNUj6OtUyW" target="_blank" class="text-white">
+    <i class="fab fa-youtube"></i>
+</a>
+</div>
+</div>
+
+</div>
+
+<hr class="border-light my-4">
+
+<div class="text-center footer-bottom">
+<p>
+© 2026 Pemerintah Desa Bantarwaru.
+</p>
+<p>
+Dikelola oleh Pemerintah Desa Bantarwaru • Sistem Informasi Desa
+</p>
+</div>
+
+</div>
+</footer>
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+// LOADING SCREEN
+window.addEventListener("load", () => {
+    const loader = document.createElement("div");
+    loader.id = "loader";
+    loader.innerHTML = `
+        <div class="spinner-border text-success" style="width:70px;height:70px;"></div>
+        <h4 class="mt-3 text-white">Memuat Website Desa...</h4>
+    `;
+
+    loader.style.position = "fixed";
+    loader.style.top = "0";
+    loader.style.left = "0";
+    loader.style.width = "100%";
+    loader.style.height = "100vh";
+    loader.style.background = "#111";
+    loader.style.display = "flex";
+    loader.style.flexDirection = "column";
+    loader.style.justifyContent = "center";
+    loader.style.alignItems = "center";
+    loader.style.zIndex = "99999";
+
+    document.body.appendChild(loader);
+
+    setTimeout(() => {
+        loader.style.transition = "1s";
+        loader.style.opacity = "0";
+
+        setTimeout(() => {
+            loader.remove();
+        },1000);
+
+    },1500);
+});
+
+
+// NAVBAR SCROLL EFFECT
+window.addEventListener("scroll", function(){
+
+    const navbar = document.querySelector(".custom-navbar");
+
+    if(window.scrollY > 50){
+        navbar.style.background = "#198754";
+        navbar.style.padding = "10px 0";
+        navbar.style.transition = "0.4s";
+    }else{
+        navbar.style.background = "rgba(0,0,0,0.35)";
+        navbar.style.padding = "15px 0";
+    }
+
+});
+
+
+// HERO TYPING EFFECT
+const text = "Website Resmi Pemerintah Desa Bantarwaru";
+let index = 0;
+
+const typingElement = document.createElement("h5");
+typingElement.style.marginTop = "20px";
+typingElement.style.color = "#fff";
+
+document.querySelector(".hero-content").appendChild(typingElement);
+
+function typingEffect(){
+
+    if(index < text.length){
+        typingElement.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typingEffect, 70);
+    }
+
+}
+
+typingEffect();
+
+
+// ANIMASI SCROLL
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+        }
+
+    });
+
+}, {
+    threshold:0.1
+});
+
+sections.forEach(section => {
+
+    section.style.opacity = 0;
+    section.style.transform = "translateY(60px)";
+    section.style.transition = "1s";
+
+    observer.observe(section);
+
+});
+
+// CHART USIA
+const usiaChart = new Chart(document.getElementById('usiaChart'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Anak', 'Remaja', 'Dewasa', 'Lansia'],
+        datasets: [{
+            data: [293, 244, 969, 252],
+            backgroundColor: ['#4e73df','#1cc88a','#36b9cc','#f6c23e']
+        }]
+    },
+    options:{
+        animation:{
+            animateRotate:true,
+            animateScale:true,
+            duration:2000
+        }
+    }
+});
+
+// CHART PENDIDIKAN
+const pendidikanChart = new Chart(document.getElementById('pendidikanChart'), {
+    type: 'bar',
+    data: {
+        labels: ['SD','SMP','SMA','Kuliah'],
+        datasets: [{
+            label:'Jumlah',
+            data:[1200,1000,850,400],
+            backgroundColor:'#198754'
+        }]
+    },
+    options:{
+        animation:{
+            duration:2000
+        }
+    }
+});
+
+// CHART PEKERJAAN
+const pekerjaanChart = new Chart(document.getElementById('pekerjaanChart'), {
+    type: 'pie',
+    data: {
+        labels:['Petani','Pedagang','PNS','Wiraswasta'],
+        datasets:[{
+            data:[45,20,10,25],
+            backgroundColor:['#198754','#0dcaf0','#ffc107','#dc3545']
+        }]
+    },
+    options:{
+        animation:{
+            animateRotate:true,
+            animateScale:true,
+            duration:2000
+        }
+    }
+});
+
+
+// COUNTER ANGKA
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter => {
+
+    const updateCounter = () => {
+
+        const target = +counter.getAttribute('data-target');
+        const current = +counter.innerText;
+
+        const increment = target / 100;
+
+        if(current < target){
+            counter.innerText = Math.ceil(current + increment);
+            setTimeout(updateCounter, 20);
+        }else{
+            counter.innerText = target;
+        }
+
+    };
+
+    updateCounter();
+
+});
+
+
+// SCROLL BUTTON
+const topBtn = document.createElement("button");
+
+topBtn.id = "topBtn";
+topBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+
+topBtn.style.position = "fixed";
+topBtn.style.bottom = "30px";
+topBtn.style.right = "30px";
+topBtn.style.width = "55px";
+topBtn.style.height = "55px";
+topBtn.style.border = "none";
+topBtn.style.borderRadius = "50%";
+topBtn.style.background = "#198754";
+topBtn.style.color = "white";
+topBtn.style.fontSize = "22px";
+topBtn.style.display = "none";
+topBtn.style.zIndex = "999";
+
+document.body.appendChild(topBtn);
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 300){
+        topBtn.style.display = "block";
+    }else{
+        topBtn.style.display = "none";
+    }
+
+});
+
+topBtn.addEventListener("click", () => {
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+</script>
+
+</body>
+</html>
